@@ -9,7 +9,7 @@ env:
   HOMEBREW_NO_AUTO_UPDATE: 1
 jobs:
   syntax:
-    if: github.repository == 'Homebrew/brew'
+    if: github.repository == 'Homebrew/brew' || github.repository == 'jasonrudolph/brew'
     runs-on: ubuntu-latest
     steps:
       - name: Set up Homebrew
