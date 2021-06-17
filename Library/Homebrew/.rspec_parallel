@@ -1,0 +1,2 @@
+--format RspecJunitFormatter
+--out test/junit/rspec<%= ENV["TEST_ENV_NUMBER"] %>.xml
