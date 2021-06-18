@@ -246,7 +246,6 @@ jobs:
   test-everything:
     name: test everything (macOS)
     needs: syntax
-    if: startsWith(github.repository, 'Homebrew/')
     runs-on: macos-latest
     env:
       HOMEBREW_BOOTSNAP: 1
@@ -270,7 +269,10 @@ jobs:
       - name: Check for uncommitted RubyGems
         run: git diff --stat --exit-code Library/Homebrew/vendor/bundle/ruby
 
-      - run: brew doctor
+      - name: brew doctor
+        run: |
+          git -C "/usr/local/Homebrew" remote set-url origin https://github.com/Homebrew/brew
+          brew doctor
 
       - name: Run brew update-tests
         if: github.event_name == 'pull_request'
